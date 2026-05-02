@@ -1,6 +1,6 @@
 # What I did today
 # 3 hour - Revised Kubernetes
-# 30 mins coding
+# 45 mins coding
 # 2 hours - Watching  Morning youtube session
 # 2 hours - 2 Labs on cloud
 
