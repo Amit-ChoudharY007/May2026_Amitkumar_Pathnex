@@ -1,8 +1,9 @@
 # What I did today
 # Kubernetes, Linux revision
-# 1 hour coding
+# 2 hour coding
 # 2 hour Watching  Morning youtube session
-# 4 hour Revised Kubernetes
+# 2 hour Revised Kubernetes
+# 1 Revised Basic of Linux
 
 ## Tomorrow's Task
 # Linux revision
