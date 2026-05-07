@@ -1,0 +1,103 @@
+ ## Ansible Task - Install Nginx on Pathnex Server
+
+    -name: Install Nginx on Pathnex Server
+     host: all
+     become: yes
+
+     tasks:
+        - name: Install Nginx
+          yum :
+            name: Nginx
+            state: present
+
+
+ ## Terraform Task - Create Ec2 (c5.xlarge)
+
+    provider "aws" {
+        region = "us-east-1"
+    }        
+
+    resource "aws-instance" "PathnexEC2" {
+        ami         = "ami-0abcd1234jdlkjlkdf"
+        instance_type = "c5.xlarge"
+
+        tage = {
+            Name = "Pathnex-Ec2"
+        }
+    }
+
+## Kubernetes - Deployment with 2 Replicas
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+    name: pathnex-Deployment
+spec:
+    Replicas: 2
+    selector: 
+        matchLables:
+            app: pathnex-app
+    template:
+        metadata:
+          lables:
+            app: pathnex-app
+        spec:
+          containers:
+            - name: app
+              image: nginx 
+              ports:
+                -containerPort: 80
+
+
+
+Shell: Print date + uptime
+
+#!/bin/bash
+
+echo "Current Date and Time:"
+date
+
+echo "System Uptime:"
+uptime
+
+
+## 🔹 Jenkins Pipeline — Parameterized
+You will learn how to **create parameterized builds in Jenkins**.
+
+pipeline {
+    agent any
+    parameters {
+        string(name: 'ENVIRONMENT', defaultValue: 'dev', description: 'Deployment Environment')
+    }
+    environment {
+        INSTITUTE_NAME = "Pathnex"
+    }
+    stages {
+        stage('Checkout') {
+            steps {
+                git url: 'https://github.com/Pathnex/sample-java-app.git'
+            }
+        }
+        stage('Deploy') {
+            steps {
+                sh 'echo "Deploying to $ENVIRONMENT by $INSTITUTE_NAME"'
+            }
+        }
+    }
+}
+
+## 🔹 GitLab CI — Parameterized via Variables
+You will learn how to **use variables to parameterize GitLab jobs**.
+
+stages:
+  - deploy
+
+variables:
+  INSTITUTE_NAME: "Pathnex"
+  ENVIRONMENT: "dev"
+
+deploy:
+  stage: deploy
+  image: alpine:latest
+  script:
+    - echo "Deploying to $ENVIRONMENT by $INSTITUTE_NAME"
