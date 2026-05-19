@@ -1,0 +1,11 @@
+# What I did today
+# AWS  revision
+# 2 hour coding
+# 3 hour Watching  Morning youtube session
+# 1 hour Revised Docker
+# 1 Hour working on labs
+
+## Tomorrow's Task
+# k8s revision
+# Watching dockek8s videos 
+# Watching  Morning youtube session
